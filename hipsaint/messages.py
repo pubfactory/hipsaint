@@ -125,8 +125,8 @@ class HipchatMessage(object):
             'hostaddress': hostaddress,
             'state': state,
             'hostoutput': hostoutput,
-            'notes': notes, 
-            'notesurl': notesurl
+            'hostnotes': hostnotes, 
+            'hostnotesurl': hostnotesurl
         }
 
     def get_service_context(self):
@@ -139,8 +139,8 @@ class HipchatMessage(object):
             'hostaddress': hostaddress,
             'state': state,
             'serviceoutput': serviceoutput,
-            'notes': notes, 
-            'notesurl': notesurl
+            'servicenotes': servicenotes, 
+            'servicenotesurl': servicenotesurl
         }
 
     def render_message(self):

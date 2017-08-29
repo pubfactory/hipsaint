@@ -9,7 +9,7 @@ host_template = """
 <strong>State:</strong> {state}<br>
 <strong>Info:</strong>
 <pre>{hostoutput}</pre>
-<strong>Notes:</strong> {notes}<br>
+<strong>Notes:</strong> {hostnotes}<br>
 <strong>Notes URL:</strong> <a href="{hostnotesurl}">{hostnotesurl}</a>
 """
 
@@ -23,7 +23,7 @@ service_template = """
 <strong>State:</strong> {state}<br/>
 <strong>Info:</strong>
 <pre>{serviceoutput}</pre>
-<strong>Notes:</strong> {notes}<br>
+<strong>Notes:</strong> {servicenotes}<br>
 <strong>Notes URL:</strong> <a href="{servicenotesurl}">{servicenotesurl}</a>
 """
 

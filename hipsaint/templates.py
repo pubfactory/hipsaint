@@ -9,6 +9,8 @@ host_template = """
 <strong>State:</strong> {state}<br>
 <strong>Info:</strong>
 <pre>{hostoutput}</pre>
+<strong>Notes:</strong> {notes}<br>
+<strong>Notes URL:</strong> <a href="{notesurl}">{notesurl}</a>
 """
 
 host_medium_template = "<strong>{timestamp} - {hostname} ({hostaddress}) - {ntype}/{state}</strong><br/><pre>{hostoutput}</pre>"
@@ -21,6 +23,8 @@ service_template = """
 <strong>State:</strong> {state}<br/>
 <strong>Info:</strong>
 <pre>{serviceoutput}</pre>
+<strong>Notes:</strong> {notes}<br>
+<strong>Notes URL:</strong> <a href="{notesurl}">{notesurl}</a>
 """
 
 service_medium_template = "<strong>{timestamp} - {servicedesc} on {hostalias} ({hostaddress}) - {ntype}/{state}</strong><br/><pre>{serviceoutput}</pre>"

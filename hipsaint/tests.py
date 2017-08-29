@@ -25,13 +25,13 @@ def mock_hipchat_error_request(mock_method):
 
 class MessageTest(unittest.TestCase):
     def setUp(self):
-        #"$HOSTNAME$|$LONGDATETIME$|$NOTIFICATIONTYPE$|$HOSTADDRESS$|$HOSTSTATE$|$HOSTOUTPUT$"
+        #"$HOSTNAME$|$LONGDATETIME$|$NOTIFICATIONTYPE$|$HOSTADDRESS$|$HOSTSTATE$|$HOSTOUTPUT$|$NOTES$|$NOTESURL$"
         self.host_inputs = 'hostname|%(longdatetime)s|%(notificationtype)s|127.0.0.1|' \
                            '%(hoststate)s|NAGIOS_OUTPUT'
         #"$SERVICEDESC$|$HOSTALIAS$|$LONGDATETIME$|$NOTIFICATIONTYPE$|$HOSTADDRESS$|$SERVICESTATE$
         # |$SERVICEOUTPUT$"
         self.service_inputs = 'servicedesc|hostalias|%(longdatetime)s|%(notificationtype)s|' \
-                              '127.0.0.1|%(servicestate)s|NAGIOS_OUTPUT'
+                              '127.0.0.1|%(servicestate)s|NAGIOS_OUTPUT|This is a test note|http://myurl.com/testhostnote'
 
     @mock.patch('hipsaint.messages.urlopen')
     def test_ok_payload_delivery(self, mock_get):
@@ -51,7 +51,8 @@ class MessageTest(unittest.TestCase):
         mock_hipchat_error_request(mock_get)
         msg_inputs = self.host_inputs % {'longdatetime': datetime.now(),
                                          'notificationtype': 'PROBLEM',
-                                         'hoststate': 'DOWN'}
+                                         'hoststate': 'DOWN', 'notes': 'This is a test note',
+ +                                         'notesurl': 'http://myurl.com/testhostnote'}
         problem_msg = HipchatMessage('host', msg_inputs, None, None, None, False, None, None)
         response = problem_msg.deliver_payload()
         response_data = json.load(response)

@@ -117,33 +117,58 @@ class HipchatMessage(object):
         install_opener(opener)
 
     def get_host_context(self):
-        print(self)
-        hostname, timestamp, ntype, hostaddress, state, hostoutput, hostnotes, hostnotesurl = self.inputs_list
-        return {
-            'hostname': hostname,
-            'timestamp': timestamp,
-            'ntype': ntype,
-            'hostaddress': hostaddress,
-            'state': state,
-            'hostoutput': hostoutput,
-            'hostnotes': hostnotes, 
-            'hostnotesurl': hostnotesurl
-        }
+        try:
+            hostname, timestamp, ntype, hostaddress, state, hostoutput, hostnotes, hostnotesurl = self.inputs_list
+            return {
+                'hostname': hostname,
+                'timestamp': timestamp,
+                'ntype': ntype,
+                'hostaddress': hostaddress,
+                'state': state,
+                'hostoutput': hostoutput,
+                'hostnotes': hostnotes, 
+                'hostnotesurl': hostnotesurl
+            }
+        except ValueError:
+            hostname, timestamp, ntype, hostaddress, state, hostoutput = self.inputs_list
+            return {
+                'hostname': hostname,
+                'timestamp': timestamp,
+                'ntype': ntype,
+                'hostaddress': hostaddress,
+                'state': state,
+                'hostoutput': hostoutput,
+                'hostnotes': "", 
+                'hostnotesurl': ""
+            }
 
     def get_service_context(self):
-        print(self)
-        servicedesc, hostalias, timestamp, ntype, hostaddress, state, serviceoutput, servicenotes, servicenotesurl = self.inputs_list
-        return {
-            'servicedesc': servicedesc,
-            'hostalias': hostalias,
-            'timestamp': timestamp,
-            'ntype': ntype,
-            'hostaddress': hostaddress,
-            'state': state,
-            'serviceoutput': serviceoutput,
-            'servicenotes': servicenotes, 
-            'servicenotesurl': servicenotesurl
-        }
+        try:
+            servicedesc, hostalias, timestamp, ntype, hostaddress, state, serviceoutput, servicenotes, servicenotesurl = self.inputs_list
+            return {
+                'servicedesc': servicedesc,
+                'hostalias': hostalias,
+                'timestamp': timestamp,
+                'ntype': ntype,
+                'hostaddress': hostaddress,
+                'state': state,
+                'serviceoutput': serviceoutput,
+                'servicenotes': servicenotes, 
+                'servicenotesurl': servicenotesurl
+            }
+        except ValueError:
+            servicedesc, hostalias, timestamp, ntype, hostaddress, state, serviceoutput = self.inputs_list
+            return {
+                'servicedesc': servicedesc,
+                'hostalias': hostalias,
+                'timestamp': timestamp,
+                'ntype': ntype,
+                'hostaddress': hostaddress,
+                'state': state,
+                'serviceoutput': serviceoutput,
+                'servicenotes': "", 
+                'servicenotesurl': ""
+            }
 
     def render_message(self):
         """

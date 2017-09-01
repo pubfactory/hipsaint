@@ -115,17 +115,6 @@ class HipchatMessage(object):
         proxy = ProxyHandler({'https': self.proxy})
         opener = build_opener(proxy)
         install_opener(opener)
-        
-    def get_host_context(self):
-        hostname, timestamp, ntype, hostaddress, state, hostoutput = self.inputs_list
-        return {
-            'hostname': hostname,
-            'timestamp': timestamp,
-            'ntype': ntype,
-            'hostaddress': hostaddress,
-            'state': state,
-            'hostoutput': hostoutput
-        }
 
     def get_host_context(self):
         hostname, timestamp, ntype, hostaddress, state, hostoutput, hostnotes, hostnotesurl = self.inputs_list
@@ -138,18 +127,6 @@ class HipchatMessage(object):
             'hostoutput': hostoutput,
             'hostnotes': hostnotes, 
             'hostnotesurl': hostnotesurl
-        }
-        
-    def get_service_context(self):
-        servicedesc, hostalias, timestamp, ntype, hostaddress, state, serviceoutputl = self.inputs_list
-        return {
-            'servicedesc': servicedesc,
-            'hostalias': hostalias,
-            'timestamp': timestamp,
-            'ntype': ntype,
-            'hostaddress': hostaddress,
-            'state': state,
-            'serviceoutput': serviceoutput
         }
 
     def get_service_context(self):

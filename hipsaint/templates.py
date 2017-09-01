@@ -9,15 +9,6 @@ host_template = """
 <strong>State:</strong> {state}<br>
 <strong>Info:</strong>
 <pre>{hostoutput}</pre>
-"""
-
-host_template_notes = """
-<strong>{timestamp} - {hostname}  (nagios@{nagios_host})</strong><br/>
-<strong>Type:</strong> {ntype}<br/>
-<strong>Host:</strong> {hostname} (<a href="{hostaddress}">{hostaddress}</a>)<br/>
-<strong>State:</strong> {state}<br>
-<strong>Info:</strong>
-<pre>{hostoutput}</pre>
 <strong>Notes:</strong> {hostnotes}<br>
 <strong>Notes URL:</strong> <a href="{hostnotesurl}">{hostnotesurl}</a>
 """
@@ -32,15 +23,6 @@ service_template = """
 <strong>State:</strong> {state}<br/>
 <strong>Info:</strong>
 <pre>{serviceoutput}</pre>
-"""
-
-service_template_notes = """
-<strong>{timestamp} - {servicedesc} on {hostalias} (nagios@{nagios_host})</strong><br/>
-<strong>Type:</strong> {ntype}<br/>
-<strong>Host:</strong> {hostalias} (<a href="{hostaddress}">{hostaddress}</a>)<br/>
-<strong>State:</strong> {state}<br/>
-<strong>Info:</strong>
-<pre>{serviceoutput}</pre>
 <strong>Notes:</strong> {servicenotes}<br>
 <strong>Notes URL:</strong> <a href="{servicenotesurl}">{servicenotesurl}</a>
 """
@@ -49,5 +31,5 @@ service_medium_template = "<strong>{timestamp} - {servicedesc} on {hostalias} ({
 service_short_template = "[{ntype}] {hostalias} {servicedesc}: {serviceoutput}"
 
 
-templates = {'host-no-notes': host_template_notes, 'host': host_template_notes, 'medium-host': host_medium_template, 'short-host': host_short_template,
-             'service-no-notes': service_template, 'service': service_template_notes, 'medium-service': service_medium_template, 'short-service': service_short_template}
+templates = {'host': host_template, 'medium-host': host_medium_template, 'short-host': host_short_template,
+             'service': service_template, 'medium-service': service_medium_template, 'short-service': service_short_template}

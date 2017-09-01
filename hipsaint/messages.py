@@ -1,4 +1,3 @@
-from telnetlib import theNULL
 try:
     # For Python 3.0 and later
     from urllib.request import urlopen, Request
@@ -175,15 +174,11 @@ class HipchatMessage(object):
         template_type = self.type
         if 'host' in template_type:
             template_context = self.get_host_context()
-            if template_context['hostnotes'] == null:
-                template_type += '-no-notes'
         elif 'service' in template_type:
             template_context = self.get_service_context()
-            if template_context['servicenotes'] == null:
-                template_type += '-no-notes'
         else:
             raise Exception('Invalid notification type')
-        
+
         ntype = template_context['ntype']
         state = template_context['state']
         if ntype != 'PROBLEM' and ntype != 'CUSTOM':
